@@ -10,21 +10,26 @@ if len(entrada)!=4:
     print("Formato inválido")
 else:
     pedaco=list(entrada)
-    if pedaco[0]!="1":
-        string.insert(0,unidade_milhar[int(pedaco[0])-1])
-    if pedaco[2]=="0" and pedaco[3]=="0":
-        string.append(centena[int(pedaco[1])-1])
-    elif pedaco[1]=="1":
-        string.append("cento e")
-    elif int(pedaco[1])>1 and pedaco[1]!="0":
-        string.append(centena[int(pedaco[1])-1]+" e")
+    if pedaco[1]!="0" or pedaco[2]!="0" or pedaco[3]!="0":
+        if pedaco[0]!="1":
+            string.insert(0,unidade_milhar[int(pedaco[0])-1])
+        if pedaco[2]=="0" and pedaco[3]=="0":
+            string.append(centena[int(pedaco[1])-1])
+        elif pedaco[1]=="1":
+            string.append("cento e")
+        elif int(pedaco[1])>1 and pedaco[1]!="0":
+            string.append(centena[int(pedaco[1])-1]+" e")
+        else:
+            string.append("e")
+        if pedaco[2]=="0":
+            string.append(unidade_milhar[int(pedaco[3])-1])
+        elif pedaco[2]=="1":
+            string.append(unidade_milhar[int(pedaco[2]+pedaco[3])-1])
+        elif int(pedaco[2])>1:
+            string.append(dezena[int(pedaco[2])-1])
+            string.append(unidade_milhar[int(pedaco[3])-1])
+        print((" ").join(string))
     else:
-        string.append("e")
-    if pedaco[2]=="0":
-        string.append(unidade_milhar[int(pedaco[3])-1])
-    elif pedaco[2]=="1":
-        string.append(unidade_milhar[int(pedaco[2]+pedaco[3])-1])
-    elif int(pedaco[2])>1:
-        string.append(dezena[int(pedaco[2])-1])
-        string.append(unidade_milhar[int(pedaco[3])-1])
-    print((" ").join(string))
+        if pedaco[0]!="1":
+            string.insert(0,unidade_milhar[int(pedaco[0])-1])
+        print((" ").join(string))
