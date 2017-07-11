@@ -14,9 +14,10 @@ for i in range(10):
     #Add no vetor.
     vetor.append(produto)
 #Organizará o vetor.
-for i in range(0,len(vetor)-1):
-    if vetor[i]["cod"]>vetor[i+1]["cod"]:
-        temp=vetor[i]["cod"]
-        vetor[i]["cod"]=vetor[i+1]["cod"]
-        vetor[i+1]["cod"]=temp
+for i in range(0,len(vetor)):
+    for j in range(0,len(vetor)):
+        if vetor[i]["cod"]<vetor[j]["cod"]:
+            temp=vetor[i]["cod"]
+            vetor[i]["cod"]=vetor[j]["cod"]
+            vetor[j]["cod"]=temp
 
